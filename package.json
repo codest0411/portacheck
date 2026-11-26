@@ -1,0 +1,67 @@
+{
+  "name": "portacheck",
+  "version": "0.1.0",
+  "description": "Statically analyze package.json scripts for cross-platform portability issues across Windows, macOS, and Linux.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "portacheck": "./bin/portacheck.js"
+  },
+  "files": [
+    "bin/",
+    "dist/",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "package-json",
+    "scripts",
+    "cross-platform",
+    "portability",
+    "linter",
+    "windows",
+    "macos",
+    "linux",
+    "cli",
+    "static-analysis"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUR_GITHUB_USERNAME/portacheck.git"
+  },
+  "homepage": "https://github.com/YOUR_GITHUB_USERNAME/portacheck#readme",
+  "bugs": {
+    "url": "https://github.com/YOUR_GITHUB_USERNAME/portacheck/issues"
+  },
+  "scripts": {
+    "clean": "node -e \"import('node:fs').then(fs => fs.rmSync('dist', { recursive: true, force: true }))\"",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src test bin",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"bin/**/*.js\" \"*.json\" \"*.md\" \"docs/**/*.md\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\" \"bin/**/*.js\" \"*.json\" \"*.md\" \"docs/**/*.md\"",
+    "test": "npm run build && tsc -p tsconfig.json && node --test \"dist-test/test/**/*.test.js\"",
+    "test:coverage": "npm run build && tsc -p tsconfig.json && node --test --experimental-test-coverage \"dist-test/test/**/*.test.js\"",
+    "prepublishOnly": "npm run format:check && npm run lint && npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/node": "^22.13.0",
+    "eslint": "^9.21.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.0"
+  }
+}

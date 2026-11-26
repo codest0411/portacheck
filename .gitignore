@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dist-test/
+coverage/
+*.tsbuildinfo
+.env
+.env.*
+.DS_Store
+Thumbs.db
+Propmt.txt

@@ -1,0 +1,14 @@
+{
+  "name": "sample-unportable-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "clean:unix": "rm -rf dist",
+    "clean:portable": "rimraf dist",
+    "start:unix": "NODE_ENV=production node server.js",
+    "start:portable": "cross-env NODE_ENV=production node server.js",
+    "dev": "node server.js & node worker.js",
+    "lint:files": "eslint 'src/**/*.ts'",
+    "build:info": "echo $(git rev-parse --short HEAD)"
+  }
+}
